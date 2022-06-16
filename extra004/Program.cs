@@ -10,40 +10,46 @@ string userPassword = "null";
 Console.WriteLine("To display the list of commands enter 'Help'");
 string userName = "user";
 
-for (int i = 1; i > 0; i++)
+bool Condition(string a, string b)
+    {
+        return a == b;
+    }
+
+while (true)
 {
+    
     // Console.WriteLine(i);
     Console.WriteLine("Enter command");
     string input = Console.ReadLine();
 
-    string exit = "Exit";
-    string name = "SetName";
-    string setPswd = "SetPassword";
-    string writeName = "WriteName";
-    string help = "Help";
+    string exit = "exit";
+    string name = "setname";
+    string setPswd = "setpassword";
+    string writeName = "writename";
+    string help = "help";
 
-    if (input == exit)
+    if (Condition(input, exit))
     {
         break;
     }
-    else if (input == name)
+    else if (Condition(input, name))
     {
         Console.WriteLine("Enter username: ");
         userName = Console.ReadLine();
     }
-    else if (input == setPswd)
+    else if (Condition(input, setPswd))
     {
         Console.WriteLine("Set your password: ");
         userPassword = Console.ReadLine();
     }
-    else if (input == help)
+    else if (Condition(input, help))
     {
-        Console.WriteLine("Enter 'Exit' for end");
-        Console.WriteLine("Enter 'SetName' to set user name");
-        Console.WriteLine("Enter 'SetPassword' to set the password");
-        Console.WriteLine("Enter 'WriteName' to display username after entering password");
+        Console.WriteLine("Enter 'exit' for end");
+        Console.WriteLine("Enter 'setname' to set user name");
+        Console.WriteLine("Enter 'setpassword' to set the password");
+        Console.WriteLine("Enter 'writename' to display username after entering password");
     }
-    else if (input == writeName)
+    else if (Condition(input, writeName))
     {
         
         Console.WriteLine("Enter your password: ");
@@ -54,7 +60,7 @@ for (int i = 1; i > 0; i++)
         }
         else if (userPassword == "null")
         {
-            Console.WriteLine("You did not set your password");
+            Console.WriteLine($"Hello, {userName}!");
         }
         else
         {
