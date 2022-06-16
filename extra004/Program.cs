@@ -6,28 +6,37 @@
 // Exit – выход
 // WriteName – вывести имя после ввода пароля
 
-string userPassword = "null";
-Console.WriteLine("To display the list of commands enter 'Help'");
-string userName = "user";
 
+Console.WriteLine("To display the list of commands enter 'Help'");
+string userName = "null";
+string userPassword = "null";
+
+string exit = "exit";
+string name = "setname";
+string setPswd = "setpassword";
+string writeName = "writename";
+string help = "help";
+
+// methods
 bool Condition(string a, string b)
     {
         return a == b;
     }
 
+// Start of cycle
 while (true)
 {
     
     // Console.WriteLine(i);
     Console.WriteLine("Enter command");
     string input = Console.ReadLine();
-
+/*
     string exit = "exit";
     string name = "setname";
     string setPswd = "setpassword";
     string writeName = "writename";
     string help = "help";
-
+*/
     if (Condition(input, exit))
     {
         break;
@@ -39,8 +48,15 @@ while (true)
     }
     else if (Condition(input, setPswd))
     {
-        Console.WriteLine("Set your password: ");
-        userPassword = Console.ReadLine();
+        if (userName != "null")
+        {
+            Console.WriteLine("Set your password: ");
+            userPassword = Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine("You should set user name at first. Enter command 'setname'");
+        }
     }
     else if (Condition(input, help))
     {
@@ -51,20 +67,26 @@ while (true)
     }
     else if (Condition(input, writeName))
     {
-        
-        Console.WriteLine("Enter your password: ");
-        string Password = Console.ReadLine();
-        if (Password == userPassword)
-        {
-            Console.WriteLine($"Hello, {userName}!");
-        }
-        else if (userPassword == "null")
+        if (userPassword == "null")
         {
             Console.WriteLine($"Hello, {userName}!");
         }
         else
         {
-            Console.WriteLine("Incorrect password");
+            Console.WriteLine("Enter your password: ");
+            string Password = Console.ReadLine();
+            if (Password == userPassword)
+            {
+                Console.WriteLine($"Hello, {userName}!");
+            }
+            if (userPassword == "null")
+            {
+                Console.WriteLine($"Hello, {userName}!");
+            }
+            else
+            {
+                Console.WriteLine("Incorrect password");
+            }
         }
     }
 }
