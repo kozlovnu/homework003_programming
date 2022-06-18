@@ -18,40 +18,34 @@ string writeName = "writename";
 string help = "help";
 
 // methods
-bool Condition(string a, string b)
+bool Condition(string a, string b) 
     {
         return a == b;
     }
-
+string Input(string output)
+{
+    Console.Write(output);
+    return Console.ReadLine();
+}
 // Start of cycle
 while (true)
 {
     
-    // Console.WriteLine(i);
-    Console.WriteLine("Enter command");
-    string input = Console.ReadLine();
-/*
-    string exit = "exit";
-    string name = "setname";
-    string setPswd = "setpassword";
-    string writeName = "writename";
-    string help = "help";
-*/
+    string input = Input("Enter command: ");
+
     if (Condition(input, exit))
     {
         break;
     }
     else if (Condition(input, name))
     {
-        Console.WriteLine("Enter username: ");
-        userName = Console.ReadLine();
+        userName = Input("Enter username: ");
     }
     else if (Condition(input, setPswd))
     {
         if (userName != "null")
         {
-            Console.WriteLine("Set your password: ");
-            userPassword = Console.ReadLine();
+            userPassword = Input("Set your password: ");
         }
         else
         {
@@ -71,15 +65,15 @@ while (true)
         {
             Console.WriteLine($"Hello, {userName}!");
         }
+        
         else
         {
-            Console.WriteLine("Enter your password: ");
-            string Password = Console.ReadLine();
+            string Password = Input("Enter your password: ");
             if (Password == userPassword)
             {
                 Console.WriteLine($"Hello, {userName}!");
             }
-            if (userPassword == "null")
+            else if (userPassword == "null")
             {
                 Console.WriteLine($"Hello, {userName}!");
             }
@@ -88,5 +82,9 @@ while (true)
                 Console.WriteLine("Incorrect password");
             }
         }
+    }
+    else
+    {
+        Console.WriteLine("Unknown command. To display the list of commands enter 'help'");
     }
 }
