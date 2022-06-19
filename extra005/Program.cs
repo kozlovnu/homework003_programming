@@ -38,7 +38,10 @@ string balance = "balance";
 
 while(true)
 {
+    Console.WriteLine("To see existing commans enter 'help'");
+    Console.WriteLine();
     string input = Input("Enter your command: ");
+    Console.WriteLine();
 
     if (Condition(input, exit))
     {
@@ -83,5 +86,9 @@ while(true)
     {
         Console.WriteLine("USD: " + usd);
         Console.WriteLine("RUR: " + rur);
+    }
+    else
+    {
+        Console.WriteLine($"Command {input} doesn't exist.");
     }
 }
