@@ -4,17 +4,17 @@
 // Программа заканчивает свою работу в тот момент, когда решит пользователь.
 
 
-double usd = Convert.ToDouble(Input("Enter amount of usd: "));
-double rur = Convert.ToDouble(Input("Enter amount of rur: "));
+decimal usd = Convert.ToDecimal(Input("Enter amount of usd: "));
+decimal rur = Convert.ToDecimal(Input("Enter amount of rur: "));
 
-double amount = 0; // количество конвертируемой валюты
+decimal amount = 0; // количество конвертируемой валюты
 
 // курс конвертации
-double usd2rur = 56.41;
-double rur2usd = 1 / 56.41;
+decimal usd2rur = 56.41m;
+decimal rur2usd = 1 / 56.41m;
 
 // методы
-double Converting(double a, double b) // конвертация
+decimal Converting(decimal a, decimal b) // конвертация
 {
     return a * b;
 }
@@ -36,9 +36,12 @@ string rurUsd = "rur2usd";
 string help = "help";
 string balance = "balance";
 
+
+
+
 while(true)
 {
-    Console.WriteLine("To see existing commans enter 'help'");
+    // Console.WriteLine("To see existing commans enter 'help'");
     Console.WriteLine();
     string input = Input("Enter your command: ");
     Console.WriteLine();
@@ -49,10 +52,10 @@ while(true)
     }
     else if (Condition(input, usdRur))
     {
-        amount = Convert.ToDouble(Input("Enter amount of currency to convert: "));
+        amount = Convert.ToDecimal(Input("Enter amount of currency to convert: "));
         if (amount <= usd)
         {
-            rur = rur + Converting(usd, usd2rur);
+            rur = rur + Converting(amount, usd2rur);
             usd = usd - amount;
         }
         else
@@ -63,10 +66,10 @@ while(true)
     }
     else if (Condition(input, rurUsd))
     {
-        amount = Convert.ToDouble(Input("Enter amount of currency to convert: "));
+        amount = Convert.ToDecimal(Input("Enter amount of currency to convert: "));
         if (amount <= rur)
         {
-            usd = usd + Converting(rur, rur2usd);
+            usd = usd + Converting(amount, rur2usd);
             rur = rur - amount;
         }
         else
