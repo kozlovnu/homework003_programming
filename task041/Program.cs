@@ -2,27 +2,19 @@
 // 0, 7, 8, -2, -2 -> 2
 // -1, -7, 567, 89, 223-> 3
 
-int size = Input("Enter amount of numbers: ");
+Console.WriteLine("Enter numbers separated by commas: ");
+string str = Console.ReadLine();
 
-int[] array = new int[size];
+int[] numbers = StringToNumbers(str);
 int count = 0;
-Console.WriteLine("Enter elements of array");
-FillArray(array);
+PrintArray(numbers);
 
-for (int i = 0; i < size; i++)
+for (int i = 0; i < numbers.Length; i++)
 {
-    if (array[i] > 0) count++;
+    if (numbers[i] > 0) count++;
 }
 
-PrintArray(array);
-Console.WriteLine($"Amount of positive numbers in array is {count}");
-
-void FillArray(int[] array)
-{
-    for (int i = 0; i < size; i++)
-    array[i] = Convert.ToInt32(Console.ReadLine());
-}
-
+Console.WriteLine(count);
 
 void PrintArray(int[] array)
 {
@@ -33,8 +25,41 @@ void PrintArray(int[] array)
     Console.WriteLine();
 }
 
-int Input(string output)
+int[] StringToNumbers(string input)
 {
-    Console.Write(output);
-    return Convert.ToInt32(Console.ReadLine());
+    int countNumbers = 1;
+
+    for (int i = 0; i < input.Length; i++)
+    {
+        if(input[i] == ',')
+        {
+            countNumbers++;
+        }
+    }
+
+    int[] numbers = new int[countNumbers];
+    int index = 0;
+
+    for (int i = 0; i < input.Length; i++)
+    {
+        string tempString = "";
+
+        while(input[i] != ',')
+        {
+            if(i != input.Length - 1)
+            {
+                tempString += input[i].ToString();
+                i++;
+            }
+            else
+            {
+                tempString += input[i].ToString();
+                break;
+            }
+        }
+        numbers[index] = Convert.ToInt32(tempString);
+        index++;
+    }
+
+    return numbers;
 }
