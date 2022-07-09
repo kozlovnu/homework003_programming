@@ -3,7 +3,7 @@
 
 
 int[,] array = new int[5,5];
-int[,] result = new int[5,5];
+
 FillRandomArray(array);
 PrintArray(array);
 Console.WriteLine("Sorted array: ");
