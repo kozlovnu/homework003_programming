@@ -4,10 +4,13 @@
 
 int[,,] array = new int[3,3,3];
 int[] numbers = new int[89];
-
-FillArray(array,numbers);
-PrintArray(array);
-
+if (array.GetLength(0) * array.GetLength(1) * array.GetLength(2) > numbers.Length)
+    Console.WriteLine("Array is too big");
+else
+{
+    FillArray(array,numbers);
+    PrintArray(array);
+}
 void FillArray(int[,,] array, int[] numbers)
 {
     int index = 10;
